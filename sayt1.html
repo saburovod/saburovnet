@@ -1,0 +1,226 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								/* Umumiy stil */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+}
+
+.logo img {
+    max-width: 100px; /* Logotipning o'lchami */
+    height: auto;
+}
+
+.menu {
+    position: fixed;
+    top: 60px;
+    left: -250px;
+    width: 250px;
+    background-color: #333;
+    padding: 1rem;
+    transition: left 0.3s ease-in-out;
+    z-index: 999;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.menu ul li {
+    margin: 1rem 0;
+}
+
+.menu ul li a {
+    color: #58;
+    text-decoration: underline;
+    font-size: 1rem;
+}
+
+.menu.active {
+    left: 0;
+}
+
+/* Modal Oyna */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(686543);
+    z-index: 999;
+}
+
+.modal-content {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    z-index: 1000;
+    max-width: 500px;
+    width: 90%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#modalBody {
+    text-align: center;
+}
+
+
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Menyu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sarlavha va Menyu -->
+    <header>
+        <div class="header-container">
+            <div class="menu-icon" id="menuIcon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="logo">
+                <img src="logo.png" alt="Mening Logotipim">
+            </div>
+            <nav class="menu" id="menu">
+                <ul>
+                    <li><a href="#" onclick="openModal('about')">Men Haqimda</a></li>
+                    <li><a href="#" onclick="openModal('contact')">Aloqa</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Modal Oynalar -->
+    <div id="modalOverlay" class="modal-overlay" onclick="closeModal()"></div>
+    <div id="modalContent" class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div id="modalBody"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+							<script>
+                            	// Burger menyu ochish/yopish
+const menuIcon = document.getElementById("menuIcon");
+const menu = document.getElementById("menu");
+
+menuIcon.addEventListener("click", () => {
+    menu.classList.toggle("active");
+});
+
+// Modal oynani boshqarish
+function openModal(modalId) {
+    const modalOverlay = document.getElementById("modalOverlay");
+    const modalContent = document.getElementById("modalContent");
+    const modalBody = document.getElementById("modalBody");
+
+    // Modal tarkibini sozlash
+    if (modalId === "about") {
+        modalBody.innerHTML = `
+            <h2>Men Haqimda</h2>
+            <p>Salom! Mening ismim saburov ogʻabek. Men dasturchi sohasida faoliyat yuritaman. Erkin vaqtimda esa sayt yaratish bilan shug‘ullanaman.</p>
+        `;
+    } else if (modalId === "contact") {
+        modalBody.innerHTML = `
+            <h2>Aloqa</h2>
+            <p>Agar men bilan bog‘lanmoqchi bo‘lsangiz, quyidagi kontakt ma’lumotlaridan foydalanishingiz mumkin:</p>
+            <ul>
+                <li>Email: <a href="mailto:saburovworkroom@gmail.com">saburovworkroom@gmail.com</a></li>
+                <li>Telefon: <a href="tel:+998951914569">+998 95-191-4569</a></li>
+                <li>Telegram: <a href="https://t.me/saburov99" target="_blank">@saburov99</a></li>
+            </ul>
+        `;
+    }
+
+    // Modalni ochish
+    modalOverlay.style.display = "block";
+    modalContent.style.display = "block";
+}
+
+function closeModal() {
+    const modalOverlay = document.getElementById("modalOverlay");
+    const modalContent = document.getElementById("modalContent");
+
+    // Modalni yopish
+    modalOverlay.style.display = "none";
+    modalContent.style.display = "none";
+}
+
+
+							</script>
+                        </body>
+                        </html>
+                    
